@@ -33,6 +33,7 @@ public class BoardDAO {
 		int totalCnt = 0;
 		
 		/*
+		 * 
 		 * DbConn dbCon = DbConn.getInstance("jdbc/dbcp");
 		 * 
 		 * Connection con=null; PreparedStatement pstmt = null; ResultSet rs= null;
