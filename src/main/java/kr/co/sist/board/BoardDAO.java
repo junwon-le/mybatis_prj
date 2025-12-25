@@ -1,10 +1,5 @@
 package kr.co.sist.board;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +21,7 @@ public class BoardDAO {
 	public static BoardDAO getInstance() {
 		if(bDAO==null) {
 			bDAO=new BoardDAO();
+			//dsafdsafds
 		}//end if
 		
 		return bDAO;
