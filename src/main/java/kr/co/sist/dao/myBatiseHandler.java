@@ -16,7 +16,7 @@ public class myBatiseHandler {
 		org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
 	}
 	
-	public static myBatiseHandler getInstance() {
+	public static myBatiseHandler getInstance() { 
 		if(mdh == null) {
 			mdh=new myBatiseHandler();
 		}
