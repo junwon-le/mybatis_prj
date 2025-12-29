@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @ToString
 @Setter
-@Getter
+@Getter 
 @AllArgsConstructor
 @NoArgsConstructor
 public class RangeDTO {
