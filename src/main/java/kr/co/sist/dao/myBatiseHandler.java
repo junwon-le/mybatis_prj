@@ -20,7 +20,7 @@ public class myBatiseHandler {
 		if(mdh == null) {
 			mdh=new myBatiseHandler();
 		}
-		return mdh;
+		return mdh; 
 	}//getInstance
 	
 	private SqlSessionFactory getSessFactory() throws IOException {
