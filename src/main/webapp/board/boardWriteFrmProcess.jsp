@@ -9,7 +9,7 @@
 request.setCharacterEncoding("UTF-8");   // ★★★ 반드시 이 자리에 있어야 한다 ★★★
 %>
 
-<jsp:useBean id="bDTO" class="kr.co.sist.board.BoardDTO" scope="page"/>
+<jsp:useBean id="bDTO" class="kr.co.sist.board.BoardDomain" scope="page"/>
 <jsp:setProperty name="bDTO" property="*"/>
 
 <%

@@ -54,7 +54,10 @@ public class test {
 			RangeDTO rDTO = new RangeDTO();
 			rDTO.setField("1");
 			rDTO.setKeyword("오늘은");
-			assertNotNull(bDAO.selectBoardTotalCnt(rDTO));
+			rDTO.setStartNum(1);
+			rDTO.setEndNum(10);
+//			assertNotNull(bDAO.selectBoardTotalCnt(rDTO));
+			assertNotNull(bDAO.selectRangeBoard(rDTO));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

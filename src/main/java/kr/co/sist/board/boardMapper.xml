@@ -19,6 +19,17 @@
 		</where>
 		
   </select>
+  <select id="selectRangeBoard" parameterType="rangeDTO" resultType="boardDomain">
+		select num, title, input_date,cnt,id
+		from  (	select num, title, content, ip, cnt, id,input_date,row_number() over(order by input_date desc) rnum 
+				from board
+				<where>
+				<if test = "keyword neq null and keyword neq ''">
+					instr( ${fieldStr} , #{keyword})!=0		
+				</if>
+				</where>
+				) where rnum between #{startNum} and #{endNum}
+  </select>
   
 
 </mapper>

@@ -87,7 +87,7 @@ public class BoardService {
 	}//getInstance
 	
 	
-	public boolean addBoard(BoardDTO bDTO) {
+	public boolean addBoard(BoardDomain bDTO) {
 		boolean flag=false;
 		
 		BoardDAO bDAO= BoardDAO.getInstance();
@@ -110,8 +110,8 @@ public class BoardService {
 	 * @param rDTO
 	 * @return
 	 */
-	public List<BoardDTO> searchBoardList(RangeDTO rDTO){
-		List<BoardDTO> list = null;
+	public List<BoardDomain> searchBoardList(RangeDTO rDTO){
+		List<BoardDomain> list = null;
 		
 		BoardDAO bDAO= BoardDAO.getInstance();
 		
@@ -129,9 +129,9 @@ public class BoardService {
 	 * 제목이 20자를 초과하면 19자까지 보여주고 뒤에 ..을 붙이는일
 	 * @param list
 	 */
-	public void titleSubStr(List<BoardDTO> boardlist) {
+	public void titleSubStr(List<BoardDomain> boardlist) {
 		String title="";	
-		for(BoardDTO bDTO : boardlist){
+		for(BoardDomain bDTO : boardlist){
 			title=bDTO.getTitle();
 			if(title.length()>19){
 				bDTO.setTitle(title.substring(0,20)+"...");
@@ -251,8 +251,8 @@ public class BoardService {
 	 * @param num
 	 * @return
 	 */
-	public BoardDTO searchOneBoard(int num) {
-		BoardDTO bDTO = null;
+	public BoardDomain searchOneBoard(int num) {
+		BoardDomain bDTO = null;
 		
 		BoardDAO bDAO= BoardDAO.getInstance();
 		
@@ -280,7 +280,7 @@ public class BoardService {
 
 	}//modifyBoardCnt
 	
-	public boolean modifyBoard(BoardDTO bDTO) {
+	public boolean modifyBoard(BoardDomain bDTO) {
 		boolean flag = false;
 		BoardDAO bDAO= BoardDAO.getInstance();
 
@@ -294,7 +294,7 @@ public class BoardService {
 	}//modifyBoard
 	
 	
-	public boolean removeBoard(BoardDTO bDTO) {
+	public boolean removeBoard(BoardDomain bDTO) {
 		boolean flag = false;
 		BoardDAO bDAO= BoardDAO.getInstance();
 		
