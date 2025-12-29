@@ -12,6 +12,9 @@
 	<typeAlias type="day1226.empAllDomain" alias="eaDomain"/><!-- 우편번호 검색 결과를 저장할 Domain -->
 	<typeAlias type="day1226.CarModelDomain" alias="cmoDomain"/><!-- 차량의 제조사, 모델명, 년식, 가격 , 옵션 , 배기량, 이미지, 입력일을 저장할 Domain -->
 	
+	<typeAlias type="kr.co.sist.board.BoardDomain" alias="boardDomain"/><!-- 차량의 제조사, 모델명, 년식, 가격 , 옵션 , 배기량, 이미지, 입력일을 저장할 Domain -->
+	<typeAlias type="kr.co.sist.board.RangeDTO" alias="rangeDTO"/><!-- 차량의 제조사, 모델명, 년식, 가격 , 옵션 , 배기량, 이미지, 입력일을 저장할 Domain -->
+	
 </typeAliases>
   <environments default="development">
     <environment id="development">
