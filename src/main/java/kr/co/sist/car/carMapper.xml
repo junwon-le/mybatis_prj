@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.car">
+<!-- 제조국에 대한 Maker 조회 -->
+		<select id="selectMaker" parameterType="String" resultType="String">
+			select maker
+			from car_country
+			where country=#{country}
+		</select>		
+<!-- 제조사에 대한 모델 조회 -->
+		<select id="selectModel" parameterType="String" resultType="String">
+			select model from CAR_MAKER where maker=#{maker} 
+		</select>
+<!-- 모델에 대한 차 정보 조회 이미지,옵션,연식,가격,배기량,입력일-->
+		<select id="selectCar" parameterType="String" resultType="kr.co.sist.car.carDomain">
+			select car_option, car_year, price, cc, car_img, input_date from car_model where model=#{model} 
+		</select>
+</mapper>

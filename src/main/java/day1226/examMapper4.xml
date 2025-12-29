@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="day1226">
+
+
+	<sql id="empCommon">
+		select ename, sal, comm, hiredate
+		from emp
+	</sql>
+	<!-- 여러 조건에 의한 여러 컬럼이 조회. - 부서번호와 사원번호를 입력받아서, 사원명, 연봉, 보너스, 입사일을 검색 -->
+	<select id="useDomain" parameterType="empDTO"
+		resultType="empDomain">
+		<include refid="empCommon" />
+		where deptno=#{deptno} and empno=#{empno}
+	</select>
+
+	<!-- like %는 PreparedStatement의 bind 변수와 함께 사용되면 인식 하지 못한다. 동에 해당하는 우편번호, 
+		시도 , 구군, 동 , 번지 검색 -->
+	<resultMap type="zipDomain" id="zipResult">
+		<result column="zipcode" property="zipcode" />
+		<result column="sido" property="sido" />
+		<result column="gugun" property="gugun" />
+		<result column="dong" property="dong" />
+		<result column="bunji" property="bunji" />
+	</resultMap>
+	<select id="like" parameterType="String" resultMap="zipResult">
+		select zipcode, sido, gugun, dong, bunji
+		from zipcode
+		where dong like #{dong}||'%'
+	</select>
+
+	<!-- < 작다 - 연봉을 입력받아 연봉 보다 적게 받는 사원의 사원번호 사원명, 연봉, 보너스, 입사일을 검색 특수 문자 : 
+		&lt; CDATA section ( <![CDATA[ 단순 문자열로 인식 ]]> ) -->
+	<!-- <select id="lessThan" parameterType="int" resultType="empDomain"> select 
+		ename, sal, comm, hiredate from emp where sal &lt; #{sal} </select> -->
+	<select id="lessThan" parameterType="int" resultType="empDomain">
+		<include refid="empCommon" />
+   <![CDATA[
+   	where sal < #{sal}
+   ]]>
+	</select>
+
+	<!-- > 크다 - 연봉을 입력받아 연봉 보다 많이 받는 사원의 사원번호 사원명, 연봉, 보너스, 입사일을 검색 -->
+	<select id="greaterThan" parameterType="int"
+		resultType="empDomain">
+		<include refid="empCommon" />
+		where sal > #{sal}
+	</select>
+
+	<!-- subquery 검색한 결과로 재검색 사원 테이블에서 가장 마지막에 입사한 사원보다 직전에 입사한 사원부터 10명의 사원정보 
+		검색 -->
+
+	<select id="subquery" resultType="eaDomain">
+		SELECT EMPNO, ENAME, SAL, HIREDATE
+		from (SELECT row_number() over(ORDER BY hiredate DESC) as rnum , EMPNO,
+		ENAME, SAL, HIREDATE
+		FROM EMP)
+		where rnum between 2 and 11
+	</select>
+
+
+	<!-- union 여러 테이블을 위에서 아래로 붙일 때 사용 emp- 본사 cp-rmp5 - 지사 본사와 지사의 모든 사원 검색 
+		검색 컬럼은 사원번호, 사원명 ,직무, 매니저번호, 연봉 ,부서번호 -->
+	<resultMap type="eaDomain" id="eaResult">
+		<result column="ename" property="ename" />
+		<result column="EMPNO" property="empno" />
+		<result column="job" property="job" />
+		<result column="mgr" property="mgr" />
+		<result column="sal" property="sal" />
+		<result column="deptno" property="deptno" />
+		<result column="office_type" property="officeType" />
+	</resultMap>
+	<select id="union" resultMap="eaResult">
+		SELECT ename, empno, job, mgr, sal, deptno , '본사' as office_type
+		FROM EMP
+		union
+		SELECT ename, empno, job, mgr, sal, deptno , '지사' as office_type
+		from cp_emp5
+	</select>
+
+	<!-- car_maker에서 -->
+
+	<!-- join : 여러 테이블을 옆으로 붙여서 조회할 때 사용. 보유중인 모든 차량의 제조사, 모델명, 연식, 가격, 배기량, 
+		입력일을 조회 -->
+	<select id="join" resultType="cmoDomain">
+		select		cma.model, cma.maker, car_year, price, cc, car_img, input_date
+		from		car_maker cma, car_model cmo
+		where 		cma.model = cmo.model
+		order by	input_date desc
+	</select>
+</mapper>

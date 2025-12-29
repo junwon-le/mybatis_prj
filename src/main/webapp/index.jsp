@@ -70,13 +70,15 @@ $(function(){
 							new UrlVO("컬럼하나에 여러행조회","day1224/scmr"),
 							new UrlVO("컬럼여러개에 한행조회","day1224/mcsr"),
 							new UrlVO("컬럼여러개에 여러행조회","day1224/mcmr"),
-							new UrlVO("like",""),
-							new UrlVO("작다의 조회",""),
-							new UrlVO("크다의 조회",""),
-							new UrlVO("subquery",""),
-							new UrlVO("union",""),
-							new UrlVO("join",""),
-							new UrlVO("subquery&join",""),
+							new UrlVO("domain사용","day1226/domain"),
+							new UrlVO("like","day1226/like"),
+							new UrlVO("작다의 조회","day1226/lessThan"),
+							new UrlVO("크다의 조회","day1226/greaterThan"),
+							new UrlVO("subquery","day1226/subquery"),
+							new UrlVO("union","day1226/union"),
+							new UrlVO("join","day1226/join"),
+							new UrlVO("subquery&join","day1229/subqueryNjoin"),
+							new UrlVO("dollar sign","day1229/dollar"),
 							new UrlVO("dynamic query : if",""),
 							new UrlVO("dynamic query : choose",""),
 							new UrlVO("dynamic query : forEach",""),
@@ -84,7 +86,8 @@ $(function(){
 							new UrlVO("PL/SQL insert",""),
 							new UrlVO("PL/SQL update",""),
 							new UrlVO("PL/SQL delete",""),
-							new UrlVO("PL/SQL cursor","")
+							new UrlVO("PL/SQL cursor",""),
+							new UrlVO("차량 검색","day1226/searchCar")
 						
 						};
 					
@@ -116,13 +119,9 @@ $(function(){
 				
 				</div>
 			</div>
-			<hr class="featurette-divider">
 		</div>
 		<!-- /.container -->
 		<!-- FOOTER -->
-		<footer class="container">
-			<c:import url="http://192.168.10.73/mybatis_prj/fragments/footer.jsp"/>
-		</footer>
 	</main>
 
 </body>
