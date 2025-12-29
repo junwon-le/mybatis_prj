@@ -15,6 +15,7 @@ import day1226.EmpDomain;
 import day1226.SelectDAO2;
 import day1226.ZipCodeDomain;
 import day1229.SelectDAO3;
+import day1229.SelectService3;
 import kr.co.sist.car.carSearchDAO;
 import kr.co.sist.car.carSearchService;
 
@@ -39,13 +40,14 @@ public class test {
 //		
 //		SelectDAO2 sDAO = SelectDAO2.getInstance();
 		SelectDAO3 sDAO3 = SelectDAO3.getInstance();
+		SelectService3 ss3 = SelectService3.getInstance();
 //		EmpDomain ed = sDAO.useDomain(eDTO);
 		try {
 //			assertNotNull(sDAO.useLike("대치동"));
 //			assertNotNull(sDAO.greaterThan(3000));
 //			assertNotNull(sDAO.subquery());
 //			assertNotNull(sDAO.union());
-			assertNotNull(sDAO3.dollar("cp_emp5"));
+			assertNotNull(ss3.dynamicIf(10));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

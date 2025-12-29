@@ -25,5 +25,14 @@
 	 <select id="dollar" parameterType="String" resultType="eaDomain">
 		 select  empno, job, sal, hiredate , deptno from ${tableName}
 	 </select>
-	 
-</mapper>
+	 <!-- 부서번호가 0이 아니면 해당 부서를 조회하고 그렇지 않으면모든 사원 정보 조회 -->
+	 <select id="if" parameterType="int" resultType="eaDomain">
+	 	select  empno, job, sal, hiredate , deptno 
+	 	from emp
+	 	<where>
+	 		<if test="deptno neq 0">
+				deptno = #{deptno}	 		
+	 		</if>
+	 	</where>
+	 </select>
+	  </mapper>

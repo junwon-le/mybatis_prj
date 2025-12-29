@@ -79,7 +79,7 @@ $(function(){
 							new UrlVO("join","day1226/join"),
 							new UrlVO("subquery&join","day1229/subqueryNjoin"),
 							new UrlVO("dollar sign","day1229/dollar"),
-							new UrlVO("dynamic query : if",""),
+							new UrlVO("dynamic query : if","day1229/dynamicIf"),
 							new UrlVO("dynamic query : choose",""),
 							new UrlVO("dynamic query : forEach",""),
 							new UrlVO("dynamic query : set",""),

@@ -45,4 +45,18 @@ public class SelectService3 {
 		
 		return empList;
 	}//dollar
+	public List<EmpDomain> dynamicIf(int deptno) throws PersistenceException {
+		List<EmpDomain> empList = null;
+		
+		if(deptno != 10 && deptno != 20 && deptno != 30 && deptno != 40  ) {
+			deptno = 0;
+		}
+		
+		SelectDAO3 sDAO3 = SelectDAO3.getInstance();
+		try {
+			empList = sDAO3.dynamicIf(deptno);
+		}catch(PersistenceException pe) {
+		}
+		return empList;
+	}//dynamicIf
 }
